@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPS Game</title>
+
+<!-- ============== css code ============== -->
+    <style>
+        *{
+            /* margin: 0;
+            padding: 0; */
+            overflow-x: hidden;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .head{
+            text-align: center;
+            margin-top: 5px;
+            border: 2px solid rebeccapurple;
+            border-radius: 20px;
+        }
+        .body{
+            margin-top: 30px;
+            display: grid;
+            justify-content: center;
+            text-align: center;
+        }
+        .score{
+            display: flex;
+            justify-content: space-evenly;
+            gap: 5%;
+
+        }
+        .vs{
+            font-size: 20px;
+
+        }
+        .vs span{
+            color: red;
+        }
+        .win{
+            font-size: 20px;
+            margin-top: 15px;
+        }
+        .choose{
+           margin-top: 60px;
+           height: auto;
+           width: 100vw;
+           display: flex;
+           justify-content: space-evenly;
+
+        }
+        .btn{
+            margin-top: 25px;
+            height: 90px;
+            border: none;
+            width: 80px;
+            font-size: 20px;
+            padding-left: 20px;
+            padding-right: 100px;
+            text-align: center;
+            border-radius: 100px;
+            background-color: rebeccapurple;
+            color: white;
+            font-weight: bold;
+        }
+        #choisee{
+            display: none;
+        }
+        .restart{
+            margin-top: 30px;
+        }
+        #restart{
+            background-color: rebeccapurple;
+            color: white;
+        }
+    </style>
+
+    <!-- ========== html code ======== -->
+</head>
+<body>
+    <div class="head">
+        <h1>Stone Paper Sessior</h1>
+    </div>
+    <div class="body">
+        <div class="vs"><h2>You <Span>VS</Span> Comp</h2></div>
+        <br>
+        <div class="score">
+            <h2>You:-</h2> <h2 id="youscore">00</h2> <br>
+            <h2>Comp:-</h2> <h2 id="compscore">00</h2>
+        </div>
+        <div class="win">
+            <h3 id="win">----</h3>
+             <h4 id="choisee">choise</h4>
+        </div>
+        <div class="choose">
+            <input type="button" value="Stone" class="btn" id="stone">
+            <input type="button" value="paper" class="btn" id="paper">
+            <input type="button" value="Sessior" class="btn" id="sessior">
+            <br>
+        </div>
+        <div class="restart">
+            <input type="button" value="Restart" id="restart">
+        </div>
+    </div>
+<!-- ============ javascript code ============ -->
+        <script>
+
+            let stone = document.getElementById("stone");
+            let paper = document.getElementById("paper");
+            let sessior = document.getElementById("sessior");
+            let choise = document.getElementById("choisee");
+            let win = document.getElementById("win");
+            let youscore = document.getElementById("youscore");
+            let compscore = document.getElementById("compscore");
+            let reset = document.getElementById("restart");
+            youScore = 0;
+            compScore = 0;
+
+    // task perform on stone button ==========
+            stone.onclick = ()=> {
+
+                let compChoise = Math.floor(Math.random()*3);
+                choise.innerText = "Stone";
+
+  // compare btw you and computers choise
+                if(compChoise == "0" && choise.innerText == "Stone"){
+                win.innerText = "Draw";
+                win.style.color = "Black";
+            };
+
+            if(compChoise == "1" && choise.innerText == "Stone"){
+                win.innerText = "You Loose ! Computer Choose Paper.";
+                win.style.color = "Red";
+                compScore++;
+                compscore.innerText = compScore;
+            };
+
+            if(compChoise == "2" && choise.innerText == "Stone"){
+                win.innerText = "You Win ! Computer Choose Sessior.";
+                win.style.color = "Black";
+                youScore++;
+                youscore.innerText = youScore;
+
+            };
+
+            if(youScore>=10 && youScore >= compScore){
+           alert("You Win");
+          };
+          if(compScore>=10 && compScore>= youScore){
+            alert("You Loose");
+          }
+            };
+
+    //  task perform on paper button =========
+            paper.onclick = ()=> {
+                let compChoise = Math.floor(Math.random()*3);
+                choise.innerText = "Paper";
+
+                if(compChoise == "0" && choise.innerText == "Paper"){
+                win.innerText = "You Win ! Computer Choose Stone.";
+                win.style.color = "Black";
+                youScore++;
+                youscore.innerText = youScore;
+
+            };
+
+            if(compChoise == "1" && choise.innerText == "Paper"){
+                win.innerText = "Draw";
+                win.style.color = "Black";
+            };
+
+            if(compChoise == "2" && choise.innerText == "Paper"){
+                win.innerText = "You Loose ! Computer Choose Sessior.";
+                win.style.color = "Red";
+                compScore++;
+                compscore.innerText = compScore;
+            };
+
+            if(youScore>=10 && youScore >= compScore){
+           alert("You Win");
+          };
+          if(compScore>=10 && compScore>= youScore){
+            alert("You Loose");
+          }
+
+            };
+
+
+// task perform on sessior button =====
+            sessior.onclick = ()=> {
+                let compChoise = Math.floor(Math.random()*3);
+                choise.innerText = "Sessior";
+
+// Comapare btw you and computere ===
+
+            if(compChoise == "0" && choise.innerText == "Sessior"){
+                win.innerText = "You Loose ! Copmuter Choose Stone.";
+                win.style.color = "Red";
+                compScore++;
+                compscore.innerText = compScore;
+            };
+
+            if(compChoise == "1" && choise.innerText == "Sessior"){
+                win.innerText = "You Win ! Copmuter Choose Paper.";
+                win.style.color = "Black";
+                youScore++;
+                youscore.innerText = youScore;
+            };
+
+            if(compChoise == "2" && choise.innerText == "Sessior"){
+                win.innerText = "Draw";
+                win.style.color = "Black";
+            };
+
+
+            if(youScore>=10 && youScore >= compScore){
+           alert("You Win");
+          };
+          if(compScore>=10 && compScore>= youScore){
+            alert("You Loose");
+          }
+
+            };
+
+// ============== reset button code ========
+            reset.onclick = ()=> {
+                youScore = "0";
+             youscore.innerText = "00";
+                compScore = "0"
+            compscore.innerText = "00";
+            };
+
+        </script>
+</body>
+</html>
